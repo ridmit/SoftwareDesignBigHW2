@@ -1,0 +1,61 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  ApiGateway:
+    build: ./ApiGateway
+    image: api-gateway:latest
+    container_name: api-gateway
+    depends_on:
+      - FileStoringService
+      - FileAnalysisService
+    ports:
+      - "5000:8080"
+    env_file:
+      - .env
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  FileStoringService:
+    build: ./FileStoringService
+    image: file-storing-service:latest
+    container_name: file-storing
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Default=Host=${POSTGRES_HOST};Port=${POSTGRES_PORT};Database=${POSTGRES_DB_STORE};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+    ports:
+      - "5001:8080"
+    volumes:
+      - filedata:/app/StoredFiles
+
+  FileAnalysisService:
+    build: ./FileAnalysisService
+    image: file-analysis-service:latest
+    container_name: file-analysis
+    depends_on:
+      - postgres
+      - FileStoringService
+    env_file:
+      - .env
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Default=Host=${POSTGRES_HOST};Port=${POSTGRES_PORT};Database=${POSTGRES_DB_ANALYSIS};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+      - FileService__BaseUrl=${FILE_SERVICE_URL}
+    ports:
+      - "5002:8080"
+
+volumes:
+  pgdata:
+  filedata:

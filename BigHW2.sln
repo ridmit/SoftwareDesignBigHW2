@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{4D372572-0D79-4CC3-A723-445C741FB33E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileStoringService", "FileStoringService\FileStoringService.csproj", "{8E8A2BBA-1939-4826-8917-981A0DF901D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Items", "Items", "{541BC064-045F-4009-9221-9AB3B71875D3}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		.env = .env
+		README.md = README.md
+		.env.example = .env.example
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileAnalysisService", "FileAnalysisService\FileAnalysisService.csproj", "{0A7FC908-B9D4-4E55-B046-0A9AC8D86A23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D372572-0D79-4CC3-A723-445C741FB33E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D372572-0D79-4CC3-A723-445C741FB33E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D372572-0D79-4CC3-A723-445C741FB33E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D372572-0D79-4CC3-A723-445C741FB33E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E8A2BBA-1939-4826-8917-981A0DF901D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E8A2BBA-1939-4826-8917-981A0DF901D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E8A2BBA-1939-4826-8917-981A0DF901D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E8A2BBA-1939-4826-8917-981A0DF901D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A7FC908-B9D4-4E55-B046-0A9AC8D86A23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A7FC908-B9D4-4E55-B046-0A9AC8D86A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A7FC908-B9D4-4E55-B046-0A9AC8D86A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A7FC908-B9D4-4E55-B046-0A9AC8D86A23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
